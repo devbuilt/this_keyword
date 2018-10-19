@@ -69,8 +69,8 @@ let leo = {
 let ana = {
     firstName: "Ana",// used call with this
     
-    }
 }
+
 
 leo.sayHi()//Hi Leo
 ana.sayHi.call(ana)//Hi Ana (but we had to copy and paste the function from above..)
@@ -79,3 +79,22 @@ ana.sayHi.call(ana)//Hi Ana (but we had to copy and paste the function from abov
 
 //how can we "borrow" the sayHi function from Leo
 //and set the value of "this" to be Ana
+
+// What about apply
+let leo = {
+    firstName: "Leo",
+    sayHi: function () {
+        return "Hi " + this.firstName
+    }
+}
+
+let ana = {
+    firstName: "Ana",// used call with this
+
+}
+
+
+leo.sayHi()//Hi Leo
+ana.sayHi.appy(ana)//Hi Ana
+
+//well this seems the same... but what happens when we start adding arguments?
