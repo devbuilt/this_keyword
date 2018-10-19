@@ -9,10 +9,10 @@ function variablesInThis(){
     //since the value of this is the window 
     // all we are doing here is creating a global variable
     // let's see what happens when we call the functions
-    this.person = "Elie";
+    this.person = "Leo";
 }
 
-console.log(person)//Elie
+console.log(person)//Leo
 
 variablesInThis() //TypeError, can't set person on undefined
 
@@ -33,10 +33,10 @@ let person = {
 }
 
 //NESTED OBJECTS
-// What happends when we hava a nested object
+// What happends when we have a nested object
 
 let people = {
-    fisrtName: "Colt",
+    firstName: "Leo",
     sayHi: function(){
         return "Hi " + this.firstName;
     },
@@ -50,8 +50,32 @@ let people = {
     }
 }
 
-person.sayHello()// "Hi colt"
+person.sayHello()// "Hi leo"
 person.determineContext()//true
 //but what is the value of the keyword this right now?
-person.dog.sayHello(); //Hello undifined 
-person.dog.determineContext()//false
+person.dog.sayHello.call(person); //"Hello Leo" 
+person.dog.determineContext.call(person)//true
+
+
+//using call in the wild
+
+let leo = {
+    firstName: "Leo",
+    sayHi: function(){
+        return "Hi " + this.firstName
+    }
+}
+
+let ana = {
+    firstName: "Ana",// used call with this
+    
+    }
+}
+
+leo.sayHi()//Hi Leo
+ana.sayHi.call(ana)//Hi Ana (but we had to copy and paste the function from above..)
+
+// How can we refactor the duplicate using call?
+
+//how can we "borrow" the sayHi function from Leo
+//and set the value of "this" to be Ana
