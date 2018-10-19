@@ -31,3 +31,27 @@ let person = {
         return this === person
     }
 }
+
+//NESTED OBJECTS
+// What happends when we hava a nested object
+
+let people = {
+    fisrtName: "Colt",
+    sayHi: function(){
+        return "Hi " + this.firstName;
+    },
+    determineContext: function(){
+        return this === person;
+    },
+    dog: {
+        sayHello: function(){
+            return "Hello " + this.firstName;
+        }
+    }
+}
+
+person.sayHello()// "Hi colt"
+person.determineContext()//true
+//but what is the value of the keyword this right now?
+person.dog.sayHello(); //Hello undifined 
+person.dog.determineContext()//false
