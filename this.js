@@ -168,3 +168,13 @@ let colt = {
     }
 }
 colt.sayHi()// Hi colt (1000 milliseconds later)
+
+// The "new" keyword
+
+function Person(FirstName, lastName){
+    this.firstName = firstName;
+    this.lastName = lastName;
+}
+let elie = new Person("Elie", "Schoopik");
+elie.firstName // "Elie"
+elie.lastName // "Schoopik"
