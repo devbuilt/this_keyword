@@ -41,7 +41,7 @@ let people = {
         return "Hi " + this.firstName;
     },
     determineContext: function(){
-        return this === person;
+        return this === peopel;
     },
     dog: {
         sayHello: function(){
