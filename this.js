@@ -95,6 +95,52 @@ let ana = {
 
 
 leo.sayHi()//Hi Leo
-ana.sayHi.appy(ana)//Hi Ana
+ana.sayHi.apply(ana)//Hi Ana
 
 //well this seems the same... but what happens when we start adding arguments?
+
+
+let leo = {
+    firstName: "Leo",
+    sayHi: function () {
+        return "Hi " + this.firstName
+    },
+    addNumbers: function(a,b,c,d){
+        return this.firstName + " just calculated " + (a+b+c+d);
+    }
+}
+
+let ana = {
+    firstName: "Ana" // used call with this
+
+}
+
+
+leo.addNumbers(1,2,3,4)//Leo jus calculated
+leo.addNumbers.call(ana,1,2,3,4)// Ana just calculated 10
+leo.addNumbers.apply(ana,[1,2,3,4])// Ana just calculated to 10
+
+// Bind 
+//The paramenters work like call, but bind returns a function with the context
+//of "this" bound already
+
+let leo = {
+    firstName: "Leo",
+    sayHi: function () {
+        return "Hi " + this.firstName
+    },
+    addNumbers: function (a, b, c, d) {
+        return this.firstName + " just calculated " + (a + b + c + d);
+    }
+}
+
+let ana = {
+    firstName: "Ana" // used call with this
+
+}
+
+let anaCalc = leo.addNumbers.bind(ana,1,2,3,4)// function(){}..
+anaCalc();// Ana just calculated to 10
+
+let anaCalc2 = leo.addNumbers.bind(ana,1,2)// function(){}
+anaCalc2();// Ana just calculated to 10
